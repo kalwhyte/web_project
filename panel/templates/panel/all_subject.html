@@ -1,0 +1,45 @@
+{% extends "panel/base.html" %}
+{% block content %}
+<div class="content_bottom">
+    <div class="col-md-8 span_3">
+        <div class="bs-example1" data-example-id="contextual-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th> <a href="{%url 'panel-subRegpage'%}" class="btn btn-primary btn-md"> Add new Subject</a></th>
+                    </tr>
+                    <tr>
+                        <th>#</th>
+                        <th> All Subjects</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for subject in  subject_list %}
+                    <form action="{% url 'panel-subup'  subject.id %}" method="get">
+                        {% csrf_token %}
+                        <input type="hidden" name="username" value="{{subject}}">
+                        <tr class="active">
+							<td>{{ forloop.counter}} </td>
+                            <td scope="row">{{subject}}</td>
+                            <td><button type="submit" class="btn btn-primary btn-md">Update</button></td>
+
+                    </form>
+					<td>
+                    <form action="{% url 'panel-subdel' subject.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="username" value="{{subject}}">
+                        <input type="hidden" name="type" value="subject">
+
+                            <button type="submit" class="btn btn-danger btn-md">Delete</button>
+                            
+                    </form>
+					</td>
+					</tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

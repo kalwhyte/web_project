@@ -1,0 +1,44 @@
+FOR STUDENTS:
+    1. View your table:
+        grades, 
+        subjects, 
+        teachers,
+        class,
+        session,
+
+
+FOR TEACHERS:
+    1. View your table: 
+        Students, 
+        subjects, 
+        grades, etc.
+        to be able to edit hes or her table
+    2. Add grades
+    
+
+FOR ADMINISTRATORS:
+    1. View your table:
+        Teachers,
+        Students,
+        sessions,
+        classes,
+        grades,
+        Everything, superUser, etc.
+        to be able to edit the table
+    = 
+
+FOR SUBJECTS 
+    1. Add all subjects view
+## DESIGN.
+
+* dashboard button not functional
+WEBPAGE:
+1. Apply now button
+2. courses
+3. contacts
+4. about us
+5. login
+6. register
+7. search
+8. footer
+9. browse more courses

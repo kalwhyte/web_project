@@ -1,0 +1,41 @@
+{% extends "panel/base.html" %}
+{% block content %}
+<table>
+
+<div class="content_bottom">
+    <div class="col-md-8 span_3">
+        <div class="bs-example1" data-example-id="contextual-table">
+            <table class="table">
+                <tbody>
+                    <tr class="active">
+                        <th>Student</th>
+                        <th>Score</th>
+                        <th>Subject</th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <form method="post">
+                        {% csrf_token %}
+                        {% for student in all_std_class %}
+                            <tr>
+                                <td>{{ student.user.username }}</td>
+                                <td>
+                                    <!--{{ form|add:"student_"|add:student.id }}-->
+                                    <input type="number" name="student_{{ student.id }}" value="{{ form|add:'student_'|add:student.id|stringformat:'s'|default_if_none:'' }}">
+
+                                </td>
+                                <td>{{ subject_name }}</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td colspan="3">
+                                <button class="btn btn-primary btn-md" type="submit">Score</button>
+                            </td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

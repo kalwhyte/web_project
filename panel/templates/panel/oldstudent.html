@@ -1,0 +1,21 @@
+{% extends "panel/base.html" %}
+    {% block content %}
+    <h1>welcome, {{user.username}}</h1>
+    <P>Phone Number: {{student_instance.phone_number}}</p>
+    <P>Email: {{student_instance.email}}</p>
+    <P>Address: {{student_instance.address}}</p>
+    <P>Gender: {{student_instance.gender}}</p>
+    <P>Date of Birth: {{student_instance.dob}}</p>
+    <P>Class: {{student_instance.std_class}}</p>
+    <P>Admission Year: {{student_instance.session.Year}}</p>
+    <P>Log: {{student_instance.last_login}}</p>
+    <P>Log: {{student_instance.date_created}}</p>
+<!--
+    <!-- Add links to view results, subjects, and grades -->
+    <a href="{% url 'panel-results'%}"> View Results </a>
+    <a href="{% url 'panel-subjects'%}"> View Subjects </a>
+    <a href="{% url 'panel-grades'%}"> View Grades </a>
+-->
+          
+    <a href="{%url 'panel-logout'%}"> Logout </a>
+    {% endblock %}

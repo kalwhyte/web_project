@@ -1,0 +1,54 @@
+{% extends "panel/base.html" %}
+{% block content %}
+<div class="content_bottom">
+    <div class="col-md-8 span_3">
+        <div class="bs-example1" data-example-id="contextual-table">
+            <table class="table">
+                <tbody>            
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <div class="form-outline">
+                            <input type="search" name="classname" id="form1" class="form-control"  placeholder="click to search"/>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                                <tr class="active">
+                                    {% if Std_subs%}
+                                    {% for subject in Std_subs%}
+                                    <h4 class="text-muted">
+                                         select a subject
+                                    </h4>
+                                        <td scope="row"><a href="{% url 'panel-Score' cls subject %}" class="btn btn-primary btn-md">{{subject}}</a></td>
+                                    {% endfor %}
+                                    {% endif%}
+                                </tr>
+                        {% if all_Std_class%}
+                            {% for student in  all_Std_class %}
+                                <form action="{% url 'panel-stdup'  id=student.id%}" method="get">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="username" value="{{student}}">
+                                    <tr class="active">
+                                            <td> {{ forloop.counter}} </td>
+                                            <td scope="row"><a href="{% url 'panel-view-student' student.id%}">{{student}}</a></td>
+                                            <td><button type="submit" class="btn btn-primary btn-md">Update</button></td>
+
+                                        </form>
+                                        <form action="{% url 'panel-stddel' student.id %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="username" value="{{student}}">
+                                            <td><button type="submit" class="btn btn-danger btn-md">Delete</button></td>
+                                    </tr>
+                                </form>
+                            {% endfor %}
+                        {% endif %}
+                        
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

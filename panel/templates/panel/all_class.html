@@ -1,0 +1,36 @@
+{% extends "panel/base.html" %}
+{% block content %}
+<div class="content_bottom">
+<div class="col-md-8 span_3">
+<div class="bs-example1" data-example-id="contextual-table">
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th> <a href="{%url 'panel-clsRegpage'%}">Add New Class</a></th>
+    </tr>
+    <tr>
+            <th>#</th>
+            <th> All Classes</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for class in  class_list %}
+        <form action="{% url 'panel-clsup' class.id %}" method="get">
+            {% csrf_token %}
+            <input type="hidden" name="username" value="{{class}}">
+            <tr class="active">
+                <td scope="row">{{ forloop.counter}} </td>
+                <td scope="row"> {{class}} </td>
+                <td><button type="submit" class="btn btn-primary btn-md">update</button></td>
+        </form>
+        <form action="{% url 'panel-clsdel' class.id %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="username" value="{{class}}">
+                <td><button type="submit" class="btn btn-danger btn-md">Delete</button></td>
+                </tr>
+        </form>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

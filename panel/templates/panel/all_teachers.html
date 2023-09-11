@@ -1,0 +1,36 @@
+{% extends "panel/base.html" %}
+{% block content %}
+<div class="content_bottom">
+<div class="col-md-8 span_3">
+<div class="bs-example1" data-example-id="contextual-table">
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th><a href="{%url 'panel-tchRegpage'%}"> Add new Teacher</a></th>
+    </tr>
+    <tr>
+            <th>#</th>
+            <th> All Teachers</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for teacher in  teacher_list %}
+        <form action="{% url 'panel-uptch' teacher.id %}" method="get">
+            {% csrf_token %}
+            <input type="hidden" name="username" value="{{teacher}}">
+            <tr class="active">
+                <td scope="row">{{ forloop.counter}} </td>
+                <td scope="row"> <a href="{%url 'panel-view-teacher' teacher.id %}">{{teacher}}</a> </td>
+                <td><button type="submit" class="btn btn-primary btn-md">update</button></td>
+        </form>
+        <form action="{% url 'panel-tchdel' teacher.id %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="username" value="{{teacher}}">
+                <td><button type="submit" class="btn btn-danger btn-md">Delete</button></td>
+                </tr>
+        </form>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

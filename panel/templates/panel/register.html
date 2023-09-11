@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    </head>
+  <body>
+<form action="" method="post" class="signup">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+    <div class="warning">
+      {% for error in form.non_field_errors %}
+      {{error}}
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if form.errors %}
+    {% for field in form %}
+    {% for error in field.errors %}
+    {{error}}
+    {% endfor %}
+    {% endfor %}
+    {% endif %}
+    <section> 
+            <div class="container">
+                <form method="POST" id="registration-form">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="full_name">Full Name:</label>
+                        <input type="text" id="full_name" name="full_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date_of_birth">Date of Birth:</label>
+                        <input type="date" id="date_of_birth" name="date_of_birth" required>
+                    </div>
+                    <div class="form_group">
+                        <label for="gender">Gender:</label>
+                        <input type="text" id="gender" name="gender" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone_number">Phone Number:</label>
+                        <input type="text" id="phone_number" name="phone_number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <!-- Emergency Contact information -->
+                    <h3>Emergency Contact Information</h3>
+                    <div class="form-group">
+                        <label for="emergency_contact_name">Name:</label>
+                        <input type="text" id="emergency_contact_name" name="emergency_contact_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emergency_contact_phone_number">Phone Number:</label>
+                        <input type="text" id="emergency_contact_phone_number" name="emergency_contact_phone_number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emergency_contact_relationship">Relationship:</label>
+                        <input type="text" id="emergency_contact_relationship" name="emergency_contact_relationship" required>
+                    </div>
+
+                    <!-- Health Information -->
+                    <h3>Health Information</h3>
+                    <div class="form-group">
+                        <label for="blood_group">Blood Group:</label>
+                        <input type="text" id="blood_group" name="blood_group" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="genotype">Genotype:</label>
+                        <input type="text" id="genotype" name="genotype" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="physician_name">Physician Name:</label>
+                        <input type="text" id="physician_name" name="physician_name" required>
+                    </div>
+
+                    <!-- Parent/Guardian Information -->
+                    <h3>Parent/Guardian Information</h3>
+                    <div class="form-group">
+                        <label for="parent_guardian_name">Name:</label>
+                        <input type="text" id="parent_guardian_name" name="parent_guardian_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="parent_guardian_phone_number">Phone Number:</label>
+                        <input type="text" id="parent_guardian_phone_number" name="parent_guardian_phone_number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="parent_guardian_address">Address:</label>
+                        <input type="text" id="parent_guardian_address" name="parent_guardian_address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="parent_guardian_email">Email:</label>
+                        <input type="email" id="parent_guardian_email" name="parent_guardian_email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="parent_guardian_occupation">Occupation:</label>
+                        <input type="text" id="parent_guardian_occupation" name="parent_guardian_occupation" required>
+                    </div>
+
+                    <!-- Previous School Information -->
+                    <h3>Previous School Information</h3>
+                    <div class="form-group">
+                        <label for="previous_school_name">Name:</label>
+                        <input type="text" id="previous_school_name" name="previous_school_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="previous_school_address">Address:</label>
+                        <input type="text" id="previous_school_address" name="previous_school_address" required>
+                    </div>
+
+                    <!-- Academic Information -->
+                    <h3>Academic Information</h3>
+                    <div class="form-group">
+                        <label for="class">Class:</label>
+                        <select id="class" name="class" required>
+                            <option value="">Select a class</option>
+                            <option value="JSS1">JSS1</option>
+                            <option value="JSS2">JSS2</option>
+                            <option value="JSS3">JSS3</option>
+                            <option value="SSS1">SSS1</option>
+                            <option value="SSS2">SSS2</option>
+                            <option value="SSS3">SSS3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date_of_admission">Date of Admission:</label>
+                        <input type="date" id="date_of_admission" name="date_of_admission" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date_of_graduation">Date of Graduation:</label>
+                        <input type="date" id="date_of_graduation" name="date_of_graduation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last_class_passed">Last Class Passed:</label>
+                        <input type="text" id="last_class_passed" name="last_class_passed" required>
+                    </div>
+                    
+                    <!-- Additional Information -->
+                    <h3>Additional Information</h3>
+                    <div class="form-group">
+                        <label for="hobbies">Hobbies:</label>
+                        <input type="text" id="hobbies" name="hobbies" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="strengths">Strengths:</label>
+                        <input type="text" id="strengths" name="strengths" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="weaknesses">Weaknesses:</label>
+                        <input type="text" id="weaknesses" name="weaknesses" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ambition">Ambition:</label>
+                        <input type="text" id="ambition" name="ambition" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="language_proficiency">Language Proficiency:</label>
+                        <input type="text" id="language_proficiency" name="language_proficiency" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="special_needs">Special Needs:</label>
+                        <input type="text" id="special_needs" name="special_needs" required>
+                    </div>
+
+                    <!-- Signature -->
+                    <h3>Signature</h3>
+                    <div class="form-group">
+                        <label for="signature">Student/Parents/Guardian Signature:</label>
+                        <input type="file" id="signature" name="signature" required>
+                    </div>
+
+                   
+
+                    <div class="form-group">
+                        <label for="course">Course:</label>
+                        <select id="course" name="course" required>
+                            <option value="">Select a course</option>
+                            <option value="English">English</option>
+                            <option value="Maths">Maths</option>
+                            <option value="French">French</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Geology">Geology</option>
+                            <option value="Biology">Biology</option>
+                            <option value="History">History</option>
+                            <option value="Geography">Geography</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Economics">Economics</option>
+                            <option value="Accounting">Accounting</option>
+                            <option value="Business Studies">Business Studies</option>
+                            <option value="Art">Art</option>
+                            <option value="Music">Music</option>
+                            <option value="Literature">Literature</option>
+                            <option value="Philosophy">Philosophy</option>
+                            <option value="Religious Studies">Religious Studies</option>
+                            <option value="Introductory Technology">Introductory Technology</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+    </section>
+  </body>
+</html>

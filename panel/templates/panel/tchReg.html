@@ -1,0 +1,12 @@
+{% extends "panel/base.html" %}
+{% block content %}
+ <h2 class="form-heading">Register teachers</h2>
+  <form class=" form-signin app-cam form-floating ng-pristine ng-invalid ng-invalid-required ng-valid-email ng-valid-url ng-valid-pattern" method="post" action="">
+    
+                    {% csrf_token %}
+                    {{ form }}
+                    
+                <input type="submit" class="btn btn-primary btn-md" value="Register" name="login" />
+                        </span>
+        </form>
+        {% endblock %}

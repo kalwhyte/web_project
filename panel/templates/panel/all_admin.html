@@ -1,0 +1,40 @@
+{% extends "panel/base.html" %}
+{% block content %}
+    <div class="content_bottom">
+     <div class="col-md-8 span_3">
+		  <div class="bs-example1" data-example-id="contextual-table">
+		    <table class="table">
+		      <thead>
+                <tr>
+                    <th>Name</th>
+                    <th><a href="{%url 'panel-admRegpage'%}"> New Admin</a></th>
+                </tr>
+		        <tr>
+		          <th>#</th>
+		          <th>Admin</th>
+		        </tr>
+		      </thead>
+		      <tbody>
+                {% for admin in  admin_list %}
+				<form action="{% url 'panel-admup' admin.id %}" method="get">
+				{% csrf_token %}
+					<input type="hidden" name="username" value="{{admin}}">
+		        <tr class="active">
+		          <th scope="row">{{ forloop.counter}} </th>
+		          <td scope="row"> {{admin}} </td>
+		          <td><button type="submit" class="btn btn-primary btn-md">update</button></td>
+				</form>
+				<form action="{% url 'panel-admdel' admin.id %}" method="post">
+				{% csrf_token %}
+					<input type="hidden" name="username" value="{{admin}}">
+				<td><button type="submit" class="btn btn-danger btn-md">Delete</button></td>
+		       	</tr>
+				</form>
+                {% endfor %}
+		      </tbody>
+		    </table>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

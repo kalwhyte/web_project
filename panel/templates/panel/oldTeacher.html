@@ -1,0 +1,9 @@
+{% extends "panel/base.html" %}
+{% block content %}
+    <P>  welcome {{user.username}}</P>
+    <P>{{teacher_instance.phone_number}}</p>
+    <P>{{teacher_instance.email}}</p>
+    <P>{{teacher_instance.address}}</p>
+    <P>{{teacher_instance.gender}}</p>
+    <a href="{%url 'panel-logout'%}"> Logout </a>
+{% endblock %}

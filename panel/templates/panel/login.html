@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Registration Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
+<link rel="stylesheet" href="{% static 'panel/style.css'%}">
+        <div class="wrapper">
+            <div class="title-text">
+                <div class="title login">
+                    Login Form
+                </div>
+            <div class="title signup">
+                Signup Form
+            </div>
+        </div>
+        <div class="form-container">
+            <div class="slide-controls">
+            <input type="radio" name="slide" id="login" checked>
+            <input type="radio" name="slide" id="signup">
+            <label for="login" class="slide login">Login</label>
+            <label for="signup" class="slide signup">Signup</label>
+            <div class="slider-tab"></div>
+            </div>
+        <div class="form-inner">
+            <form action="" class="login" method="post">
+              {% csrf_token %}
+              {% if form.non_field_errors %}
+                <div>
+                  {% for error in form.non_field_errors %}
+                      <span class="erro">{{error}}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+              {% if form.errors %}
+                  {% for field in form %}
+                      {% for error in field.errors %}
+                          <span class="erro">
+                              {{error}}
+                          </span>
+                      {% endfor %}
+                  {% endfor %}
+              {% endif %}
+              <div class="field">
+                  {{form.username}}
+            </div>
+            <div class="field">
+                {{form.password}}
+            </div>
+            <div class="pass-link">
+                <a href="#">Forgot password?</a>
+            </div>
+            <div class="field btn">
+                <div class="btn-layer"></div>
+                <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">
+                Not a member? <a href="{%url 'panel-loginpage'%}">Signup now</a>
+            </div>
+        </form>
+        <form action="#" class="signup">
+            <div class="field">
+                <label for="user-type">User Type</label>
+                <ul>
+                    <li>
+                        <input type="radio" name="user-type" id="admin" checked>
+                        <label for="admin">Admin :</label>
+                        <a href="{% url 'panel-admRegpage'%}">Register Admin</a>
+                    </li>
+                    <li>
+                        <input type="radio" name="user-type" id="student">
+                        <label for="student">Student :</label>
+                        <a href="{% url 'panel-StdRegpage'%}">Register Student</a>
+                    </li>
+                    <li>
+                        <input type="radio" name="user-type" id="teacher">
+                        <label for="teacher">Teacher :</label>
+                        <a href="{% url 'panel-tchRegpage'%}">Register Teacher</a>
+                    </li>
+                </ul>            
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="{% static 'js/node.js' %}">
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends "panel/base.html" %}
+{% block content %}
+<form action="" method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 form-login">
+                {% csrf_token %}
+                {{ username_form.username}}
+                {{ form.phone_number }}
+                {{ form.email}}
+                {{form.address}}
+                {{ form.gender }}
+                
+                <button class="btn btn-primary btn-md" type="submit">Update</button>
+                    </span>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

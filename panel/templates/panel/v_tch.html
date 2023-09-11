@@ -1,0 +1,38 @@
+{% extends "panel/base.html"%}
+{% block content%}
+<div class="container_bottom">
+    <div class="col-mid-8 span_3">
+        <div class="bs-example1" data-example-id="contextual-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>subject</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <tr class="active">
+                        <td>{{ user.user }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.phone_number }}</td>
+                        <td>
+                        {% if subjects %}
+                        <select>
+                            {% for subject in subjects %}
+                        
+                            <option value="Subject">{{subject}}</option>
+                        
+                        {% endfor %}
+                        </select>
+                        {% endif %}
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>            
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'panel/admin.css' %}">
+</head>
+<body>
+    <div id="content" class="container">
+        <div class="card">
+            <div class="profile-card">
+                <img src="{% static 'panel/images/profile.png' %}" alt="profile">
+            </div>
+            <div class="profile-details">
+                <h2 class="card-title">Welcome {{user.username}}</h2>
+                <div class="card-body">
+                    <h3>Address: {{ admin_instance.address }}</h3>
+                    <h3>role: {{ admin_instance.role }}</h3>
+                    <h3>Phone Number: {{admin_instance.phone_number}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-list-container">
+        <ul class="card-list" >
+            <li ><a href="{%url 'panel-allstd'%}" >Student</a></li>
+            <li ><a href="{%url 'panel-alladm'%}" > Admin</a></li>
+            <li ><a href="{%url 'panel-allcls'%}" > Class</a></li>
+            <li ></li>
+            <li ><a href="{% url 'panel-logout'%}" > Logout </a> </li>
+            <li ><a href="{%url 'panel-session'%}" > Session</a></li>
+        </ul>
+    </div>
+
+    <div id="footer" >
+        <h2>&copy; 2023 CodeTrybe Institute</h2>
+    </div>
+        
+</div>
+</body>
+</html>

@@ -1,0 +1,207 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'panel/admin.css' %}" type='text/css' />
+</head>
+<body>
+<!--/sidebar-menu-->
+    <div class="sidebar-menu">
+        <header class="logo1">
+            <a href="#" class="sidebar-icon"> <span class="fa fa-bars">CodeTrybe</span> </a> 
+        </header>
+        <div class="menu">
+            <ul id="menu" >
+                <div class="sidebar">
+                    <div class="sidebar-header"><img src="{% static 'images/smile.png' %}" alt="CodeTrybe Logo"></div>
+                </div>
+                <div class="profile_img">	
+    				<span class="profile-img"><img src="{% static 'images/team1.jpg' %}" alt=""></span>
+					<div class="user-name"> 
+                        <h1>welcome {{ user.username }}</h1>
+                    </div>
+                </div>
+                <div class="dropdown profile_details_drop"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></div>
+            	    <div class="dropdown-menu drp-mnu">
+                        <a href="#"><i class="fa fa-user"></i> Profile</a>
+                        <ul>
+                            <li><strong>Name:</strong> {{ user.firstname }} {{ user.lastname }}</li>
+                            <li><strong>Email:</strong> {{ user.email }}</li>
+                            <li><a href="/admin/profile/view">View Profile</a></li>
+                            <ul>
+                                <li><span><img src="{& static 'images/team2.jpg' &}" alt=""></span></li>
+                                <li><a href="/admin/profile/edit">Edit Profile</a></li>
+                                <li><a href="/admin/profile/change_password">Change Password</a></li>
+                            </ul>
+                        </ul>
+                    </div>
+                    <div class="dropdown-menu fa-inbox">
+                        <a href="#"><i class="fa fa-fa-envelope nav_icon"></i><span>Inbox</span></a>
+                        <ul id="menu-academico-sub" >
+                            <li id="menu-academico-avaliacoes" ><a href="#">Mail</a></li>
+                            <li id="menu-academico-boletim" ><a href="#">Compose email</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-menu fa-gallery-grid">
+                        <a href="#"><i class="fa fa-picture-o" aria-hidden="true"></i><span>Gallery</span></a>
+                        <ul id="menu-academico-sub" >
+                            <li id="menu-academico-avaliacoes" ><a href="#">All Pictures</a></li>
+                            <li id="menu-academico-boletim" >
+                                <a href="#">Add Picture</a>
+                                <input type="file" id="upload-picture" style="display: none;">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-menu drp-mnu">
+                        <a href="#"><i class="fa fa-users"></i><span>People</span></a>
+                        <ul id="menu-academico-sub" >
+                            <li id="menu-academico-avaliacoes" ><a href="#">Community</a></li>
+                            <li id="menu-academico-boletim" ><a href="#">Registration Form</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-menu drp-mnu">
+                        <a href="#"><i class="fa fa-cog"></i> Settings</a>
+                        <a href="#"><i class="fa fa-sign-out"></i> Logout</a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </u>
+        </div>
+    </div>
+    <div class="w3layouts-right">
+	        <!--search-box-->
+		<div class="w3-search-box">
+			<form action="#" method="post">
+	    		<input type="text" placeholder="Search..." required="">	
+	    		<input type="submit" value="">					
+			</form>
+		</div><!--//end-search-box-->
+		<div class="clearfix"> </div>
+	</div>
+    <div class="w3layouts-center">
+		<li class="dropdown head-dpdn">
+			<div class="dropdown-menu fa-Teachers">
+                <a href="#"><i class="fa fa-users"></i><span>Teachers</span></a>
+                    <ul id="menu-academico-sub" >
+                        <li id="menu-academico-avaliacoes" ><a href="#">All Teachers</a></li>
+                            <ul>
+                                <td>
+                                        <div class="card">
+                                            <h2>Teachers</h2>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Teacher ID</th>
+                                                        <th>Teacher Name</th>
+                                                        <th>Teacher Email</th>
+                                                        <th>Teacher Phone_Number</th>
+                                                        <th>Teacher Address</th>
+                                                        <th>Teacher Subject</th>
+                                                        <th>Actions<th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for teacher in teachers %}
+                                                    <tr>
+                                                        <td>{{ teacher.teacher_id }}</td>
+                                                        <td>{{ teacher.teacher_name }}</td>
+                                                        <td>{{ teacher.teacher_email }}</td>
+                                                        <td>{{ teacher.teacher_phone_number }}</td>
+                                                        <td>{{ teacher.teacher_address }}</td>
+                                                        <td>{{ teacher.teacher_subject }}</td>
+                                                        <td>
+                                                            <a href="/admin/profile/view/{{ teacher.teacher_id }}" class="btn btn-primary">View</a>
+                                                            <a href="/admin/teacher/edit/{{ teacher.teacher_id }}" class="btn btn-primary">Edit</a>
+                                                            <a href="/admin/teacher/delete/{{ teacher.teacher_id }}" class="btn btn-danger">Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </td>                                                          
+                                </ul>
+                            <li id="menu-academico-boletim" ><a href="#">Add Teacher</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="w3layouts-left">    
+        <div class="profile_details_left"><!--notifications of menu start -->
+            <ul class="nofitications-dropdown">
+                <li class="dropdown head-dpdn">
+                    <div class="dropdown-menu fa-Students">
+                        <a href="#"><i class="fa fa-users"></i><span>Students</span></a>
+                        <ul id="menu-academico-sub" >
+                            <li id="menu-academico-avaliacoes" ><a href="#">All Students</a></li>
+                                <ul>
+                                    <td>
+                                        <div class="card">
+                                            <h2>Students</h2>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Student ID</th>
+                                                        <th>Student Name</th>
+                                                        <th>Student Email</th>
+                                                        <th>Student Phone_Number</th>
+                                                        <th>Student Address</th>
+                                                        <th>Student Class</th>
+                                                        <th>Actions<th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for student in students %}
+                                                    <tr>
+                                                        <td>{{ student.student_id }}</td>
+                                                        <td>{{ student.student_name }}</td>
+                                                        <td>{{ student.student_email }}</td>
+                                                        <td>{{ student.student_phone_number }}</td>
+                                                        <td>{{ student.student_address }}</td>
+                                                        <td>{{ student.student_class }}</td>
+                                                        <td>
+                                                            <a href="/admin/profile/view/{{ student.student_id }}" class="btn btn-primary">View</a>
+                                                            <a href="/admin/student/edit/{{ student.student_id }}" class="btn btn-primary">Edit</a>
+                                                            <a href="/admin/student/delete/{{ student.student_id }}" class="btn btn-danger">Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </td>                                                          
+                                </ul>
+                            <li id="menu-academico-boletim" ><a href="#">Add Student</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--footer-starts-->
+    <div class="w3layouts-down">
+        <div class="footer">
+            <div class="container">
+                <div class="row">     
+                    <div class="col-md-6 footer-right">
+                        <ul class="social-icons">
+                            <span><a href="#"><i class="fa fa-facebook"></i></a></span>
+                            <span><a href="#"><i class="fa fa-twitter"></i></a></span>
+                            <span><a href="#"><i class="fa fa-google-plus"></i></a></span>
+                            <span><a href="#"><i class="fa fa-linkedin"></i></a></span>
+                            <span><a href="#"><i class="fa fa-dribbble"></i></a></span>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="copyrights">
+	        <p>© 2023 CodeTrybe Institute. All Rights Reserved | Design by Whyte & Pelumi </a> </p>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</body>
+</html>
